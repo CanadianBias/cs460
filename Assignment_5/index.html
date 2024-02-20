@@ -2,6 +2,7 @@
 <!-- Elijah Dromarsky -->
 <!-- edromarsky@emmaus.edu -->
 <!-- HTML document for JavaScript Programming Assignment 5 -->
+<!-- Basically just one big form element -->
 <html>
     <head>
         <title>Form Submission Page</title>
@@ -12,31 +13,48 @@
         <h1>Application to Emmaus Bible College</h1>
         <form>
             <label for="firstName">Firstname: </label>
-            <input type="text" id="firstName" name="firstName" required><br>
+            <input type="text" id="firstName" name="firstName" class="reqIn" required><br>
             <label for="lastName">Lastname: </label>
-            <input type="text" id="lastName" name="lastName" required><br>
+            <input type="text" id="lastName" name="lastName" class="reqIn" required><br>
             <label for="address">Street Address: </label>
-            <input type="text" id="address" name="address" required><br>
+            <input type="text" id="address" name="address" class="reqIn" required><br>
             <label for="city">City: </label>
-            <input type="text" id="city" name="city"><br>
+            <input type="text" id="city" name="city" class="reqIn" required><br>
             <label for="state">State (Abbreviation): </label>
-            <input type="text" id="state" name="state"><br>
+            <input type="text" id="state" name="state" class="reqIn" required><br>
             <label for="zip">Zip/Postal Code: </label>
-            <input type="text" id="zip" name="zip"><br>
+            <input type="text" id="zip" name="zip" class="reqIn" required><br>
             <label for="email">Email: </label>
-            <input type=text id="email" name="email"><br>
+            <input type=text id="email" name="email" class="reqIn" required><br>
             <label for="phone">Phone #: </label>
-            <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"><br>
+            <input type="tel" id="phone" name="phone" class="reqIn" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br>
             <label for="birthday">Birthdate: </label>
-            <input type="date" id="birthday" name="birthday"><br>
+            <input type="date" id="birthday" name="birthday" class="reqIn" required><br>
+            <span>Favourite Bible Book: </span>
             <!-- Placeholder for JSON list of Bible Books -->
             <select id="bibleBookDropdown">
                 
-            </select>
+            </select><br>
             <label for="note">Notes: </label>
-            <input type="text" id="note" name="note"><br>
-            <input type="submit" id="submitThisPlease" name="submitThisPlease" value="Submit">
+            <input type="text" id="note" name="note" class="reqIn"><br>
+            <input type="submit" id="submitThisPlease" name="submitThisPlease" value="Submit" disabled>
+            <input type="reset" value="Reset Form">
         </form>
+        <table id="entryTable">
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State (Abbreviation)</th>
+                <th>Zip Code</th>
+                <th>Email</th>
+                <th>Phone #</th>
+                <th>Birthday</th>
+                <th>Favourite Bible Book</th>
+                <th>Note</th>
+            </tr>
+        </table>
         <script src="main.js"></script>
     </body>
 </html>
