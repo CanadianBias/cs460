@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- Elijah Dromarsky -->
+<!-- edromarsky@emmaus.edu -->
+<!-- HTML page for CS460, Assignment 4 -->
+<!-- Series of inputs and text divs for testing events in JS -->
+<!-- IP of Elijah Dromarsky, not for redistribution or republishing -->
+<html>
+    <head>
+        <title>Events in JS</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div id="header">
+            <h1>Experimenting With Events in JavaScript</h1>
+        </div>
+        <!-- Event listener is within main.js -->
+        <div class="testBox">
+            <div id="ex-onload">This text should change when the page loads.</div>
+        </div>
+        <div class="testBox">
+            <input type="text" id="ex-change" name="ex-change" onchange="displayNewValue()" placeholder="Enter text inside this text input">
+            <div id="displayHere"></div>
+        </div>
+        <div class="testBox">
+            <input type="button" id="ex-click" name="ex-click" onclick="changePageColor()" value="Click this button to change the page color">
+        </div>
+        <!-- Event listener is within main.js -->
+        <div class="testBox">
+            <div id="ex-hover">Hover over this text to display mouse coordinates</div>
+            <div id="mouseCoords"></div> 
+        </div>
+        <!-- Event listener is within main.js -->
+        <div class="testBox">
+            <div id="ex-keydown">Hex value of the key you press will go here: </div>
+        </div>
+        <div class="testBox">
+            <input type="button" id="ex-timer" name="ex-timer" onclick="startTimer()" value="Click this button to start the timer">
+            <div id="timerFace">00:00</div>
+        </div>
+        <div class="testBox">
+            <input type="button" id="ex-click2" name="ex-click2" onclick="changeElementColor()" value="Click this button to change the button's color">
+        </div>
+        <div id="footer">
+            <span>Elijah Dromarsky, 2024</span>
+        </div>
+        <script src="main.js"></script>
+    </body>
+</html>

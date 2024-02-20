@@ -1,0 +1,25 @@
+body {
+    font-family: sans-serif;
+    color: rgb(221, 221, 221);
+    background-color: rgb(29, 42, 53);
+}
+h1 {
+    display: inline-block;
+    margin-right: 50px;
+}
+button {
+    display: inline;
+}
+#imgFlexbox {
+    display: flex;
+    flex-wrap: wrap;
+}
+.captionBox {
+    flex: 1 1 250px;
+    background-color: rgb(56, 68, 77);
+    height: 250px;
+}
+img {
+    width: 100%;
+    height: 80%;
+}

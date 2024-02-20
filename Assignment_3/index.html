@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Application Form</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>Form for Very Important Survey</h1>
+        <div id="formEntrySpace">
+            <label for="firstName">First Name: </label>
+            <input type="text" id="firstName" name="firstName"><br>
+            <label for="lastName">Last Name: </label>
+            <input type="text" id="lastName" name="lastName"><br>
+            <div>Gender: </div>
+            <input type="radio" id="male" name="gender" value="Male">
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="Female">
+            <label for="female">Female</label><br>
+            <label for="birthDate">Birth Date: </label>
+            <input type="date" id="birthDate" name="birthDate" onchange="updateAge()"><br>
+            <div id="age"></div>
+            <label for="creditScore">Credit Score: </label>
+            <input type="range" id="creditScore" name="creditScore" min="300" max="900" oninput="updateCreditScore()" onchange="updateCreditScore()">
+            <span id="spanCredit"></span><br>
+            <input type="button" name="buttomSubmit" id="buttonSubmit" value="Submit" onclick="saveProfile()">
+        </div>
+        <h2>Table of Entries</h2>
+        <input type="button" id="buttonSortCredit" name="buttonSortCredit" value="Sort by Credit Score" onclick="sortByCreditScore()">
+        <input type="button" id="buttonSortAge" name="buttonSortAge" value="Sort by Age" onclick="sortByAge()">
+        <input type="button" id="buttonSortLastName" name="buttonSortLastName" value="Sort by Shortest Last Name" onclick="sortByLengthOfLastName()">
+        <table id="peopleTable">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Birth Date</th>
+                <th>Credit Score</th>
+            </tr>
+        </table>
+        <script src="main.js"></script>
+    </body>
+</html>

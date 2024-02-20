@@ -1,0 +1,14 @@
+body {
+    background-color: rgb(250,249,247);
+    color: rgb(51,51,51);
+}
+label, input {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+table, td {
+    border: 1px solid;
+}
+th, td {
+    padding: 10px;
+}

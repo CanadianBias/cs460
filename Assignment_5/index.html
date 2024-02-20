@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- Elijah Dromarsky -->
+<!-- edromarsky@emmaus.edu -->
+<!-- HTML document for JavaScript Programming Assignment 5 -->
+<html>
+    <head>
+        <title>Form Submission Page</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>Application to Emmaus Bible College</h1>
+        <form>
+            <label for="firstName">Firstname: </label>
+            <input type="text" id="firstName" name="firstName" required><br>
+            <label for="lastName">Lastname: </label>
+            <input type="text" id="lastName" name="lastName" required><br>
+            <label for="address">Street Address: </label>
+            <input type="text" id="address" name="address" required><br>
+            <label for="city">City: </label>
+            <input type="text" id="city" name="city"><br>
+            <label for="state">State (Abbreviation): </label>
+            <input type="text" id="state" name="state"><br>
+            <label for="zip">Zip/Postal Code: </label>
+            <input type="text" id="zip" name="zip"><br>
+            <label for="email">Email: </label>
+            <input type=text id="email" name="email"><br>
+            <label for="phone">Phone #: </label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"><br>
+            <label for="birthday">Birthdate: </label>
+            <input type="date" id="birthday" name="birthday"><br>
+            <!-- Placeholder for JSON list of Bible Books -->
+            <select id="bibleBookDropdown">
+                
+            </select>
+            <label for="note">Notes: </label>
+            <input type="text" id="note" name="note"><br>
+            <input type="submit" id="submitThisPlease" name="submitThisPlease" value="Submit">
+        </form>
+        <script src="main.js"></script>
+    </body>
+</html>

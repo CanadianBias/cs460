@@ -1,0 +1,36 @@
+body {
+    color: #000000;
+    margin: 0px;
+}
+a {
+    text-decoration: none;
+    color: #e3e3e3
+}
+h1 {
+    text-align: center;
+}
+h2 {
+    margin: 30px;
+}
+#coursesearch {
+    margin: 5px;
+    border: none;
+    height: 5px;
+}
+#header {
+    top: 0px;
+    left: 0px;
+    text-align: center;
+}
+#header div {
+    display: inline-block;
+}
+#header, #header div a {
+    color: #e3e3e3;
+    background-color: #1c1a1a;
+    text-decoration: none;
+}
+#header > * {
+    padding: 20px;
+    vertical-align: middle;
+}
