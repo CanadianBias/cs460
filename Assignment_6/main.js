@@ -6,12 +6,15 @@
 ≡≡≡≡≡ Intellectual Property of Elijah Dromarsky, All Rights Reserved ≡≡≡≡≡≡≡≡≡≡≡≡≡
 ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 */
-// format obtained from https://codetogo.io/how-to-fetch-xml-in-javascript/
-fetch("eng-darby.osis.xml")
-    .then(response => response.text())
-    .then(data => {
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(data, "application/xml");
-        console.log(xml);
-    })
-    .catch(console.error);
+async function printText() {
+    let response = await fetch("https://bible-api.com/john+3:16");
+    //console.log(promise);
+    if (response.ok) {
+        let json = await response.json();
+        // console.log(json);
+        document.getElementById("testElement").innerHTML = json;
+    } else {
+        alert("HTTPS-Error: " + response.status);
+    }
+}
+printText();
