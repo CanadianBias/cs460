@@ -26,7 +26,14 @@ async function populateDropdown() {
         let json = await response.json();
         console.log(json);
         for (i=0;i<=66;i++) {
-            document.getElementById("bibleBookDropdown").addItem(json.books[i].book);
+            // Format for adding elements to select dropdown sourced from https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/add
+            let sel = document.getElementById("bibleBookDropdown");
+
+            let opt = document.createElement("option");
+            opt.value = json.books[i].book;
+            opt.text = json.books[i].book;
+
+            sel.add(opt, null);
         }
     } else {
         alert("HTTP-Error: " + response.status);
