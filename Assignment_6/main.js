@@ -25,9 +25,9 @@ async function populateDropdown() {
     if (response.ok) {
         let json = await response.json();
         console.log(json);
-        // for (i=0;i<=66;i++) {
-        //     document.getElementById("bibleBookDropdown").innerHTML += "<option value='" + json.books[i].book + "'>" + json.books[i].book + "</option>";
-        // }
+        for (i=0;i<=66;i++) {
+            document.getElementById("bibleBookDropdown").innerHTML += "<option value='" + json.books[i].book + "'>" + json.books[i].book + "</option>";
+        }
     } else {
         alert("HTTP-Error: " + response.status);
     }
