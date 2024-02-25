@@ -57,7 +57,7 @@ function handleSubmit(event) {
 }
 printText();
 
-let selectBook = document.getElementsByName("bibleBookDropdown");
+let selectBook = document.getElementById("bibleBookDropdown");
 function updateChapterDropdown() {
     console.log("The event listener is working");
     console.log(selectBook.value);
