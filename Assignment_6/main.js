@@ -57,13 +57,13 @@ function handleSubmit(event) {
 }
 printText();
 
+let selectBook = document.getElementsByName("bibleBookDropdown");
 function updateChapterDropdown() {
     console.log("The event listener is working");
     console.log(selectBook.value);
 }
 updateChapterDropdown();
 
-let selectBook = document.getElementsByName("bibleBookDropdown");
 selectBook.addEventListener("change", updateChapterDropdown);
 
 console.log(document.getElementById("bibleBookDropdown").value);
