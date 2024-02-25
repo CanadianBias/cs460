@@ -26,7 +26,7 @@ async function populateDropdown() {
         let json = await response.json();
         console.log(json);
         for (i=0;i<=66;i++) {
-            document.getElementById("bibleBookDropdown").innerHTML += "<option value='" + json.books[i].book + "'>" + json.books[i].book + "</option>";
+            document.getElementById("bibleBookDropdown").addItem(json.books[i].book);
         }
     } else {
         alert("HTTP-Error: " + response.status);
