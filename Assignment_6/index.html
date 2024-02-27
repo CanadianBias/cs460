@@ -12,7 +12,7 @@
     <body>
         <form>
             <!-- Could alternatively use text inputs rather than dropdowns (might be more practical) -->
-            <select id="bibleBookDropdown">
+            <!-- <select id="bibleBookDropdown">
                     
             </select>
             <select id="chapterDropdown">
@@ -21,7 +21,10 @@
             <select id="verseDropdown">
     
             </select>
-            <input type="submit" value="Print Verse">
+            <input type="submit" value="Print Verse"> -->
+            <label for="txtRef">Bible Reference Lookup: </label>
+            <input type="text" name="txtRef" id="txtRef" placeholder="Enter a Bible reference">
+            <input type="button" name="lookup" id="lookup" value="Search">
         </form>
         <script src="main.js"></script>
     </body>
