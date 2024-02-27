@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+    <script>
+        var todos = [];
+
+        function addTodo() {
+            var todoText = document.getElementById("todoText").value;
+            todos.push(todoText);
+            displayTodos();
+        }
+
+        function displayTodos() {
+            var todoList = document.getElementById("todoList");
+            todoList.innerHTML = "";
+            for (var i = 0; i < todos.length; i++) { // Changed from <= to <
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(todos[i]));
+                todoList.appendChild(li);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>To-Do List</h2>
+    <input type="text" id="todoText" placeholder="Enter a new todo">
+    <button onclick="addTodo()">Add Todo</button>
+    <ul id="todoList"></ul>
+</body>
+</html>

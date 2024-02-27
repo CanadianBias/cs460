@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Quiz</title>
+    <style>
+        li {
+            padding: 10px;
+        }
+    </style>
+    <script>
+        var questions = [
+            {
+                question: "What is the capital of France?",
+                choices: ["London", "Berlin", "Paris", "Madrid"],
+                correctAnswer: "Paris"
+            },
+            {
+                question: "What is 2 + 2?",
+                choices: [3, 4, 5, 6],
+                correctAnswer: 4
+            },
+            {
+                question: "Who wrote 'Romeo and Juliet'?",
+                choices: ["Jane Austen", "William Shakespeare", "Charles Dickens", "F. Scott Fitzgerald"],
+                correctAnswer: "William Shakespeare"
+            },
+            {
+                question: "Game Over!",
+                choices: [],
+                correctAnswer: ""
+            }
+        ];
+
+        var currentQuestion = 0;
+        var score = 0;
+
+        function displayQuestion() {
+            var questionText = document.getElementById("questionText");
+            questionText.innerHTML = questions[currentQuestion].question;
+
+            var choices = document.getElementById("choices");
+            choices.innerHTML = "";
+
+            for (var i = 0; i < questions[currentQuestion].choices.length; i++) {
+                var li = document.createElement("li");
+                var choice = questions[currentQuestion].choices[i];
+                li.appendChild(document.createTextNode(choice));
+                
+                
+                li.onclick = function(li) {
+                    
+                    // console.log(choice);
+                    // console.log(li.currentTarget.childNodes[0].data);
+                    // console.log(questions[currentQuestion].correctAnswer);
+                    console.log(li.currentTarget.childNodes[0].data + " was clicked");
+                    if (li.currentTarget.childNodes[0].data == questions[currentQuestion].correctAnswer) {
+                        score++;
+                        currentQuestion++;
+                    }
+                    displayQuestion();
+                };
+                choices.appendChild(li);
+            }
+        }
+
+        function displayScore() {
+            alert("Your score is: " + score + " out of " + (questions.length - 1));
+        }
+
+        window.onload = function() {
+            displayQuestion();
+        };
+    </script>
+</head>
+<body>
+    <h2>Simple Quiz</h2>
+    <div id="questionText"></div>
+    <ul id="choices"></ul>
+    <button onclick="displayScore()">Show Score</button>
+</body>
+</html>
