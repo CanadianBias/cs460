@@ -12,8 +12,9 @@ async function printText(strURL) {
     //console.log(promise);
     if (response.ok) {
         let json = await response.json();
-        console.log(json);
+        // console.log(json);
         //document.getElementById("testElement").innerHTML = json.text;
+        document.getElementById("testLand").innerHTML = json.text;
     } else {
         alert("HTTPS-Error: " + response.status);
     }
