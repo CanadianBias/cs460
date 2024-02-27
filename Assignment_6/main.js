@@ -28,13 +28,14 @@ async function populateDropdown() {
         for (i=0;i<=66;i++) {
             // Format for adding elements to select dropdown sourced from https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/add
             let sel = document.getElementById("bibleBookDropdown");
-
+            
             let opt = document.createElement("option");
             opt.value = json.books[i].book;
             opt.text = json.books[i].book;
-
+            
             sel.add(opt, null);
         }
+        updateChapterDropdown();
     } else {
         alert("HTTP-Error: " + response.status);
     }
@@ -62,7 +63,6 @@ function updateChapterDropdown() {
     console.log("The event listener is working");
     console.log(selectBook.value);
 }
-updateChapterDropdown();
 
 selectBook.addEventListener("change", updateChapterDropdown);
 
