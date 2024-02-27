@@ -56,37 +56,38 @@ function handleSubmit(event) {
     
 }
 
-let selectBook = document.getElementById("bibleBookDropdown");
-
-async function populateChapterDropdown() {
-    // Source referenced: https://www.geeksforgeeks.org/javascript-get-the-index-of-an-object-by-its-property/
-
-    // console.log("The event listener is working");
-    // console.log(selectBook.value);
-
-    let response = await fetch("bibleBooks.json");
-    //console.log(promise);
-    if (response.ok) {
-        let json = await response.json();
-        let prop = "book";
-        let val = selectBook.value;
-    
-        let i = json.map(function (e) {
-            return e.book;
-        }).indexOf(val);
-    
-        console.log(i);
-
-    } else {
-        alert("HTTP-Error: " + response.status);
-    }
-
-}
-
 // async function calls
 populateBookDropdown();
 printText();
 
-selectBook.addEventListener("change", populateChapterDropdown);
+let selectBook = document.getElementById("bibleBookDropdown");
+
+// async function populateChapterDropdown() {
+//     // Source referenced: https://www.geeksforgeeks.org/javascript-get-the-index-of-an-object-by-its-property/
+
+//     // console.log("The event listener is working");
+//     // console.log(selectBook.value);
+
+//     let response = await fetch("bibleBooks.json");
+//     //console.log(promise);
+//     if (response.ok) {
+//         let json = await response.json();
+//         let prop = "book";
+//         let val = selectBook.value;
+    
+//         let i = json.map(function (e) {
+//             return e.book;
+//         }).indexOf(val);
+    
+//         console.log(i);
+
+//     } else {
+//         alert("HTTP-Error: " + response.status);
+//     }
+
+// }
+
+
+// selectBook.addEventListener("change", populateChapterDropdown);
 
 // console.log(document.getElementById("bibleBookDropdown").value);
