@@ -64,17 +64,23 @@ async function populateChapterDropdown() {
     // console.log("The event listener is working");
     // console.log(selectBook.value);
 
-    let prop = "book";
-    let val = selectBook.value;
     let response = await fetch("bibleBooks.json");
-    let i = arrayObj.map(function (e) {
-        return e.prop;
-    }).indexOf(val);
+    //console.log(promise);
     if (response.ok) {
         let json = await response.json();
-    }
+        let prop = "book";
+        let val = selectBook.value;
     
-    console.log(i);
+        let i = json.map(function (e) {
+            return e.book;
+        }).indexOf(val);
+    
+        console.log(i);
+
+    } else {
+        alert("HTTP-Error: " + response.status);
+    }
+
 }
 
 // async function calls
