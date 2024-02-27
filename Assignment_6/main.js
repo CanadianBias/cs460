@@ -6,8 +6,9 @@
 ≡≡≡≡≡ Intellectual Property of Elijah Dromarsky, All Rights Reserved ≡≡≡≡≡≡≡≡≡≡≡≡≡
 ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 */
-async function printText() {
-    let response = await fetch("https://bible-api.com/john+3:16");
+async function printText(strURL) {
+    let source = strURL
+    let response = await fetch(source);
     //console.log(promise);
     if (response.ok) {
         let json = await response.json();
@@ -20,6 +21,7 @@ async function printText() {
 
 // This database works to populate the bible books and chapters, but it doesn't tell you how many verses are per chapter
 // function that grabs the JSON file data and populates the dropdown with it
+// Might not be very useful if using text inputs, unless there's some way to check against it
 async function populateBookDropdown() {
     let response = await fetch("bibleBooks.json");
     //console.log(promise);
@@ -58,9 +60,9 @@ function handleSubmit(event) {
 
 // async function calls
 populateBookDropdown();
-printText();
+printText("https://bible-api.com/jn%203:16");
 
-let selectBook = document.getElementById("bibleBookDropdown");
+// let selectBook = document.getElementById("bibleBookDropdown");
 
 // async function populateChapterDropdown() {
 //     // Source referenced: https://www.geeksforgeeks.org/javascript-get-the-index-of-an-object-by-its-property/
