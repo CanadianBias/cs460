@@ -20,7 +20,7 @@ async function printText() {
 
 // This database works to populate the bible books and chapters, but it doesn't tell you how many verses are per chapter
 // function that grabs the JSON file data and populates the dropdown with it
-async function populateDropdown() {
+async function populateBookDropdown() {
     let response = await fetch("bibleBooks.json");
     //console.log(promise);
     if (response.ok) {
@@ -57,15 +57,30 @@ function handleSubmit(event) {
 }
 
 let selectBook = document.getElementById("bibleBookDropdown");
-function updateChapterDropdown() {
+
+async function populateChapterDropdown() {
+    // Source referenced: https://www.geeksforgeeks.org/javascript-get-the-index-of-an-object-by-its-property/
+
     // console.log("The event listener is working");
     // console.log(selectBook.value);
+
+    let prop = "book";
+    let val = selectBook.value;
+    let response = await fetch("bibleBooks.json");
+    let i = arrayObj.map(function (e) {
+        return e.prop;
+    }).indexOf(val);
+    if (response.ok) {
+        let json = await response.json();
+    }
+    
+    console.log(i);
 }
 
 // async function calls
-populateDropdown();
+populateBookDropdown();
 printText();
 
-selectBook.addEventListener("change", updateChapterDropdown);
+selectBook.addEventListener("change", populateChapterDropdown);
 
-console.log(document.getElementById("bibleBookDropdown").value);
+// console.log(document.getElementById("bibleBookDropdown").value);
