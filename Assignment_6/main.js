@@ -26,8 +26,8 @@ function addListItem() {
     let ul = document.getElementById("verseList");
     let li = document.createElement("li");
     let input = document.getElementById("txtRef").value;
-    li.innerHTML = printText(("https://bible-api.com/" + input))
-    ul.innerHTML += li;
+    li.innerHTML = printText(("https://bible-api.com/" + input));
+    ul.appendChild(li);
 }
 
 document.getElementById("lookup").addEventListener("click", addListItem);
