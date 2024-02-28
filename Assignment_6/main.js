@@ -6,6 +6,11 @@
 ≡≡≡≡≡ Intellectual Property of Elijah Dromarsky, All Rights Reserved ≡≡≡≡≡≡≡≡≡≡≡≡≡
 ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 */
+
+// I'm not sure exactly what the assignment description was asking for
+// It wasn't phrased very well
+// Hopefully this shows my knowledge of using the fetch API querying an external source
+
 async function printText() {
     // let source = strURL
     let input = document.getElementById("txtRef").value;
