@@ -27,7 +27,7 @@ function addListItem() {
     let li = document.createElement("li");
     let input = document.getElementById("txtRef").value;
     li.innerHTML = printText(("https://bible-api.com/" + input))
-    ul.add(li, null);
+    ul.innerHTML += li;
 }
 
 document.getElementById("lookup").addEventListener("click", addListItem);
