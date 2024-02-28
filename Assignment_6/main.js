@@ -12,9 +12,9 @@ async function printText(strURL) {
     //console.log(promise);
     if (response.ok) {
         let json = await response.json();
-        console.log(json.reference);
-        console.log(json.text);
-        return (json.reference + ": " + json.text);
+        let ref = json.reference;
+        let verse = json.text;
+        return (ref + ": " + verse);
         // console.log(json);
         //document.getElementById("testElement").innerHTML = json.text;
         // document.getElementById("testLand").innerHTML = json.text;
