@@ -12,14 +12,25 @@ async function printText(strURL) {
     //console.log(promise);
     if (response.ok) {
         let json = await response.json();
+        return (json.reference + ": " + json.text);
         // console.log(json);
         //document.getElementById("testElement").innerHTML = json.text;
-        document.getElementById("testLand").innerHTML = json.text;
+        // document.getElementById("testLand").innerHTML = json.text;
     } else {
         alert("HTTPS-Error: " + response.status);
     }
 }
-printText("https://bible-api.com/jn%203:16");
+// printText("https://bible-api.com/jn%203:16");
+
+function addListItem() {
+    let ul = document.getElementById("verseList");
+    let li = document.createElement("li");
+    let input = document.getElementById("txtRef").value;
+    li.innerHTML = printText(("https://bible-api.com/" + input))
+    ul.add(li, null);
+}
+
+document.getElementById("lookup").addEventListener("click", addListItem);
 
 // function buttonClicked() {
 
