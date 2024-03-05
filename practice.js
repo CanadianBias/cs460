@@ -1,30 +1,60 @@
 function withoutX(str) { // trims off leading and trailing x's
     // check first char to see if =x
-    if (str[0] === 'x') {
+    if (str[0] == 'x') {
         str=str.substring(1); // .substring() function takes one or two parameters, index and length
     }
     // console.log(str.at(-1)); // .at() method allows negative indexing of strings and arrays
     // check last char to see if =x
-    if (str.at(-1) === 'x') {
+    if (str.at(-1) == 'x') {
         str=str.substring(0,str.length-1);
     }
     // return string without leading/trailing x
     return str;
 }
 function isPrime(num) { // returns a boolean if a given parameter number is prime or not prime
+    let sqrt = Math.sqrt(num);
     if (num <= 1) {
         return "Neither Prime nor Not Prime";
     }
-    else if (num%2 === 0 && num!=2) {
+    else if (num%2 == 0 && num!=2) {
         return false;
     } else {
-        for (i=3;i<=Math.sqrt(num);i+=2) { // Math.sqrt returns the square root of a number
-            if (num%i === 0) {
+        for (i=3;i<=sqrt;i+=2) { // Math.sqrt returns the square root of a number
+            if (num%i == 0) {
                 return false;
             }
         }
     }
-    return true
+    return true;
+}
+function arrPrimes(n1,n2) {
+    primeArray=[];
+    nRange: for (i=n1;i<=n2;i++) {
+        let sqrt = Math.sqrt(i);
+        if (i <= 1) {
+            continue nRange;
+        }
+        else if (i%2 == 0 && i!=2) {
+            continue nRange;
+        } else {
+            oddPrimeCheck: for (j=3;j<=sqrt;j+=2) { // Math.sqrt returns the square root of a number
+                if (i%j == 0) {
+                    continue nRange;
+                }   
+            }
+        }
+        primeArray.push(i)
+    }
+    return primeArray;
+}
+function arrFactors(n) {
+    factorArray=[];
+    for (i=2;i<n;i++) {
+        if (n%i == 0) {
+            factorArray.push(i);
+        }
+    }
+    return factorArray;
 }
 function sumX2Y(x,y) { // returns of sum of range of two numbers
     let sum=0;
@@ -97,6 +127,45 @@ function pre4(intArray) {
         return intArray.slice(0,intArray.indexOf(4));
     }
 }
+function sum28(intArray) {
+    let arraySum = 0;
+    for (i=0;i<intArray.length;i++) {
+        if (intArray[i] == 2) {
+            arraySum+=intArray[i];
+        }
+    }
+    if (arraySum == 8) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function mean(numArray) {
+    let sum = 0;
+    for (i=0;i<numArray.length;i++) {
+        sum+=numArray[i];
+    }
+    return (sum/numArray.length)
+}
+function stdDev(numArray) {
+    let m = mean(numArray);
+    let sumDeviations = 0;
+    for (i=0;i<numArray.length;i++) {
+        sumDeviations+=(numArray[i]-m)**2;
+    }
+    return (Math.sqrt(sumDeviations/numArray.length))
+}
+function luckySum(a,b,c) {
+    if (a == 13) {
+        return 0;
+    } else if (b == 13) {
+        return (a);
+    } else if (c == 13) {
+        return (a+b);
+    } else {
+        return (a+b+c);
+    }
+}
 function collatz(num) {
     let counter=0
     while (num > 1) {
@@ -110,10 +179,21 @@ function collatz(num) {
     return counter;
 }
 // Error ridden - probably best to do on own time
-function histogram(intArray) {
-    let aResult = [];
-    for (i=0;i<intArray.length;i++) {
-        aResult[intArray[i]]+=1;
+// function histogram(intArray) {
+//     let aResult = [];
+//     for (i=0;i<intArray.length;i++) {
+//         aResult[intArray[i]]+=1;
+//     }
+//     return aResult;
+// }
+function indexLargest(arrNumbers) {
+    let largestNum = arrNumbers[0];
+    let largestIndex = 0;
+    for (i=1;i<arrNumbers.length;i++) {
+        if (arrNumbers[i] > largestNum) {
+            largestNum=arrNumbers[i];
+            largestIndex=i;
+        }
     }
-    return aResult
+    return largestIndex
 }
