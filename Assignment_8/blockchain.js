@@ -34,7 +34,18 @@ To fake a transaction, each element after the hack needs to be re-added to the c
 
 */
 
-const SHA256 = require('crypto-js/sha256');
+// define my own hasing algorithm without needing SHA256 library
+// challenge: find a library to reference that does a real SHA256
+function SHA256(str) {
+    let hash = 0;
+
+    for (let i=0;i<str.length;i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+    }
+
+    return hash;
+}
 
 class Block {
   constructor(timestamp, data, previousHash = '') {
@@ -46,7 +57,7 @@ class Block {
 
   calculateHash() {
     // each link's hash hash is concatenation of previous hash, time, and data stringified
-    return SHAworke256(this.previousHash + this.timestamp + JSON.stringify(this.data)).toString();
+    return SHA256(this.previousHash + this.timestamp + JSON.stringify(this.data)).toString();
   }
 }
 
