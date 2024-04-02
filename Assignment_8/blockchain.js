@@ -39,6 +39,7 @@ To fake a transaction, each element after the hack needs to be re-added to the c
 function SHA256(str) {
     let hash = 0;
 
+    // loop through each char in str
     for (let i=0;i<str.length;i++) {
         const char = str.charCodeAt(i);
         hash = ((hash << 5) - hash) + char;
@@ -69,7 +70,8 @@ class Blockchain {
     // first element in the array
     // blockchain needs genesis block to start
     createGenesisBlock() {
-        return new Block('01/01/2024', 'Genesis block', '0');
+        const today = new Date();
+        return new Block(today, 'Genesis block', '0');
     }
 
     getLatestBlock() {
@@ -105,6 +107,11 @@ class Blockchain {
     // valid chain! looped through all links!
     return true;
     }
+
+    getDataList() {
+        let result = [];
+    }
+
 }
 
 // Usage
