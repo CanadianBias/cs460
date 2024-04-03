@@ -1,3 +1,12 @@
+/* 
+≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+≡≡≡≡≡ Elijah Dromarsky ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+≡≡≡≡≡ edromarsky@emmaus.edu ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+≡≡≡≡≡ Creating JS webpages for educational purposes ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+≡≡≡≡≡ Intellectual Property of Elijah Dromarsky, All Rights Reserved ≡≡≡≡≡≡≡≡≡≡≡≡≡
+≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+*/
+
 // Blockchain example obtained via ChatGPT
 // 
 // goal:  build a website to demonstrate the use of this code
@@ -5,6 +14,7 @@
 // Modify the code:
 // 
 //    add a 'memo' property to the Block object
+//    Memo is a property only seemingly available in React... I can't find anything else referring to memos in vanilla JS
 //
 // Build these functions:
 //    getBlockSum() - return the sum of the blockchain elements
@@ -16,15 +26,6 @@
 //
 //   implement additional functionality during class discussion
 //
-
-/* 
-≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-≡≡≡≡≡ Elijah Dromarsky ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-≡≡≡≡≡ edromarsky@emmaus.edu ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-≡≡≡≡≡ Creating JS webpages for educational purposes ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-≡≡≡≡≡ Intellectual Property of Elijah Dromarsky, All Rights Reserved ≡≡≡≡≡≡≡≡≡≡≡≡≡
-≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-*/
 
 /*
 
@@ -88,41 +89,60 @@ class Blockchain {
 
     // check integrity of the entire chain
     isChainValid() {
-    // starting with second element of array to skip genesis element
-    for (let i = 1; i < this.chain.length; i++) {
-        const currentBlock = this.chain[i];
-        const previousBlock = this.chain[i - 1];
+        // starting with second element of array to skip genesis element
+        for (let i = 1; i < this.chain.length; i++) {
+            const currentBlock = this.chain[i];
+            const previousBlock = this.chain[i - 1];
 
-        // re-hash this link Check #1
-        if (currentBlock.hash !== currentBlock.calculateHash()) {
-            return false;
+            // re-hash this link Check #1
+            if (currentBlock.hash !== currentBlock.calculateHash()) {
+                return false;
+            }
+
+            // verify stored hashes
+            if (currentBlock.previousHash !== previousBlock.hash) {
+                return false;
+            }
         }
 
-        // verify stored hashes
-        if (currentBlock.previousHash !== previousBlock.hash) {
-            return false;
+        // valid chain! looped through all links!
+        return true;
+    }
+
+    // Returns a single dump of the blockchain in a string
+    getBlockSum() {
+        let blockSum = "";
+        for (let i = 0; i < this.chain.length; i++) {
+            blockSum += this.chain[i].hash;
         }
+        return blockSum;
+    }
+    
+    getTransactions() {
+        let transactionList = [];
+        for (let i = 0; i < this.chain.length; i++) {
+            transactionList.push(this.chain[i].hash);
+        }
+        return transactionList;
     }
 
-    // valid chain! looped through all links!
-    return true;
-    }
-
-    getDataList() {
+    getDataList() { // Unfinished
         let result = [];
     }
 
 }
 
-// Usage
+// Testing object creating and methods
 let myCoin = new Blockchain(); // creates Genesis block [0]
 myCoin.addBlock(new Block('02/01/2024', { amount: 4 }));
 myCoin.addBlock(new Block('03/01/2024', { amount: 8 }));
 
 console.log('Is blockchain valid? ' + myCoin.isChainValid());
 
-// Tamper with data
-myCoin.chain[1].data = { amount: 100 };
-myCoin.chain[1].hash = myCoin.chain[1].calculateHash();
+console.log(myCoin.getBlockSum());
 
-console.log('Is blockchain valid? ' + myCoin.isChainValid());
+// // Tamper with data
+// myCoin.chain[1].data = { amount: 100 };
+// myCoin.chain[1].hash = myCoin.chain[1].calculateHash();
+
+// console.log('Is blockchain valid? ' + myCoin.isChainValid());
