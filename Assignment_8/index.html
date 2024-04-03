@@ -4,9 +4,19 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Blockchain Testing</title>
-        <script src="blockchain.js"></script>
     </head>
     <body>
-        
+        <h1>Blockchain Testing Zone</h1>
+        <input type="text" id="txtData" name="txtData" placeholder="Send me money...">
+        <input type="button" id="btnNewBlock" name="btnNewBlock" value="Add Transaction">
+        <input type="button" id="showChain" name="showChain" value="View Blockchain Sum">
+        <p id="sumLanding"></p>
+        <table id="myTable">
+            <tr>
+                <th>Transaction</th>
+                <th>Hash</th>
+            </tr>
+        </table>
+        <script src="blockchain.js"></script>
     </body>
 </html>

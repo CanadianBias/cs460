@@ -52,6 +52,7 @@ function SHA256(str) {
 class Block {
   constructor(timestamp, data, previousHash = '') {
     this.timestamp = timestamp; // when the transaction occurred
+    // The timestamp acts as a nonce to randomize the hash of the blockchain
     this.data = data; // time sent by caller
     this.previousHash = previousHash; // integrity check on chain
     this.hash = this.calculateHash(); // this link's hash
@@ -67,6 +68,7 @@ class Blockchain {
     constructor() {
     // every chain starts with a genesis block
         this.chain = [this.createGenesisBlock()];
+        this.getTransactions();
     }
     // first element in the array
     // blockchain needs genesis block to start
@@ -109,24 +111,27 @@ class Blockchain {
         return true;
     }
 
-    // Returns a single dump of the blockchain in a string
+    // Returns a single dump of the blockchain's hashes in a string
     getBlockSum() {
-        let blockSum = "";
+        let blockSum = 0;
         for (let i = 0; i < this.chain.length; i++) {
-            blockSum += this.chain[i].hash;
+            blockSum += parseInt(this.chain[i].hash);
         }
         return blockSum;
     }
     
+    // Returns an array of each hash in the blockchain
     getTransactions() {
         let transactionList = [];
+        let myTable = document.getElementById("myTable");
+        myTable.innerHTML = "<tr><th>Transaction</th><th>Hash</th></tr>"
         for (let i = 0; i < this.chain.length; i++) {
             transactionList.push(this.chain[i].hash);
+            myTable.innerHTML += "<tr><td>" + i + "</td><td>" + this.chain[i].hash + "</td></tr>";
         }
-        return transactionList;
     }
 
-    getDataList() { // Unfinished
+    getDataList() { // Unfinished and unused, from work in class
         let result = [];
     }
 
@@ -134,15 +139,42 @@ class Blockchain {
 
 // Testing object creating and methods
 let myCoin = new Blockchain(); // creates Genesis block [0]
-myCoin.addBlock(new Block('02/01/2024', { amount: 4 }));
-myCoin.addBlock(new Block('03/01/2024', { amount: 8 }));
 
-console.log('Is blockchain valid? ' + myCoin.isChainValid());
+// function to create current date, and create new block, allows event listener to call method
+function newBlockInit() {
+    let today = new Date();
+    let data = parseFloat(document.getElementById("txtData").value);
+    myCoin.addBlock(new Block(today, { amount: data } ));
+}
 
-console.log(myCoin.getBlockSum());
+// function call to allow event listener to use object method
+function callSum() {
+    let spot = document.getElementById("sumLanding");
+    spot.innerHTML = "Sum: " + myCoin.getBlockSum();
+}
+
+
+// Function exists simply to call method
+function callTransactions() {
+    myCoin.getTransactions();
+}
+
+// myCoin.addBlock(new Block('02/01/2024', { amount: 4 }));
+// myCoin.addBlock(new Block('03/01/2024', { amount: 8 }));
+
+// console.log('Is blockchain valid? ' + myCoin.isChainValid());
+
+// console.log(myCoin.getBlockSum());
 
 // // Tamper with data
 // myCoin.chain[1].data = { amount: 100 };
 // myCoin.chain[1].hash = myCoin.chain[1].calculateHash();
 
 // console.log('Is blockchain valid? ' + myCoin.isChainValid());
+
+// Event listeners
+let btnNew = document.getElementById("btnNewBlock");
+let btnSum = document.getElementById("showChain");
+btnSum.addEventListener("click", callSum);
+btnNew.addEventListener("click", newBlockInit);
+btnNew.addEventListener("click", callTransactions);
