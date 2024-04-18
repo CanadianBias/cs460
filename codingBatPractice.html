@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        
+        <script>
+            // Given string, does "xyz" appear in middle of string
+            // characters to left and right of xyz must differ by at most one
+            function xyzMiddle(string) {
+                let isMiddle = false;
+                let index = string.indexOf("xyz");
+                if (index != -1) {
+                    let firstSubstring = string.substring(0,index);
+                    let secondSubstring = string.substring(index+3);
+                    if (firstSubstring.length == secondSubstring.length || firstSubstring.length + 1 == secondSubstring.length || firstSubstring.length == secondSubstring.length + 1) {
+                        isMiddle = true;
+                    }
+                }
+                return isMiddle
+            }
+        </script>
+    </body>
+</html>
