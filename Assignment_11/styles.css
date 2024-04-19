@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(46, 46, 46);
+    color: aliceblue;
+}
+body > * {
+    margin: 10px;
+    padding: 10px;
+}
+header {
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    margin: 0px;
+    top: 0px;
+    left: 0px;
+}
+#divTable {
+    background-color: rgb(83, 83, 83);
+    position: relative;
+    margin-left: 12.5%;
+    width: 75%;
+    top: 100px;
+}
+#entryTable {
+    width: 100%;
+}
+#entryTable input {
+    width: 90%;
+} 
+#htmlCanvas {
+    position: relative;
+    top: 90px;
+    float: left;
+    background-color: rgb(83, 83, 83);
+    width: 45%;
+}
+#htmlCanvas h2 {
+    text-align: center;
+}
+#thisCanvas {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
