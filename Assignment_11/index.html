@@ -2,54 +2,148 @@
 <html>
     <head>
         <link rel="stylesheet" href="styles.css">
+        <script src="https://cdn.plot.ly/plotly-2.31.1.min.js" charset="utf-8"></script>
     </head>
     <body>
         <header>
             <h1>Graphics Libraries Tutorial</h1>
         </header>
-        <div id="divTable">
-            <table id="entryTable">
-                <tr>
-                    <th>X</th>
-                    <th>Y</th>
-                </tr>
-                <tr>
-                    <td><input type="text" class="inputBox"></td>
-                    <td><input type="text" class="inputBox"></td>
-                </tr>
-                <tr>
-                    <td><input type="text" class="inputBox"></td>
-                    <td><input type="text" class="inputBox"></td>
-                </tr>
-                <tr>
-                    <td><input type="text" class="inputBox"></td>
-                    <td><input type="text" class="inputBox"></td>
-                </tr>
-                <tr>
-                    <td><input type="text" class="inputBox"></td>
-                    <td><input type="text" class="inputBox"></td>
-                </tr>
-                <tr>
-                    <td><input type="text" class="inputBox"></td>
-                    <td><input type="text" class="inputBox"></td>
-                </tr>
-                <tr>
-                    <td><input type="text" class="inputBox"></td>
-                    <td><input type="text" class="inputBox"></td>
-                </tr>
-                <tr>
-                    <td><input type="text" class="inputBox"></td>
-                    <td><input type="text" class="inputBox"></td>
-                </tr>
-                <tr>
-                    <td><input type="text" class="inputBox"></td>
-                    <td><input type="text" class="inputBox"></td>
-                </tr>
-            </table>
+        <div class="flexbox"> /
+            <div class="divTable">
+                <h2>Table for Canvas Graphs</h2>
+                <table id="canvasTable" class="myTables">
+                    <tr>
+                        <th>X</th>
+                        <th>Y</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="divTable">
+                <h2>Table for Bar Graphs</h2>
+                <table id="barTable" class="myTables">
+                    <tr>
+                        <th>X</th>
+                        <th>Y</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="divTable">
+                <h2>Table for Pie Graphs</h2>
+                <table id="pieTable" class="myTables">
+                    <tr>
+                        <th>Category</th>
+                        <th>Percentage</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="inputBox"></td>
+                        <td><input type="text" class="inputBox"></td>
+                    </tr>
+                </table>
+            </div>
         </div>
-        <div id="htmlCanvas">
-            <h2>HTML Canvas Demo</h2>
-            <canvas id="thisCanvas"></canvas>
+        <div class="flexbox">
+            <div id="htmlCanvas" class="graphBox">
+                <h2>HTML Canvas Demo</h2>
+                <canvas id="thisCanvas" class="myCanvi"></canvas>
+            </div>
+            <div id="htmlCanvas2" class="graphBox">
+                <h2>HTML Canvas Demo</h2>
+                <canvas id="secondCanvas" class="myCanvi"></canvas>
+            </div>
+            <div id="barPlot" class="graphBox"></div>
+
         </div>
         <script src="main.js"></script>
     </body>

@@ -16,30 +16,42 @@ header {
     top: 0px;
     left: 0px;
 }
-#divTable {
+.divTable {
+    flex: 1 0 auto;
+    text-align: center;
     background-color: rgb(83, 83, 83);
     position: relative;
-    margin-left: 12.5%;
-    width: 75%;
+    /* margin-left: 12.5%; */
+    padding: 5px;
+    width: 50%;
     top: 100px;
 }
-#entryTable {
+.myTables {
     width: 100%;
 }
-#entryTable input {
+.myTables input {
     width: 90%;
+}
+.flexbox {
+    display: flex;
+    flex-flow: wrap;
+    align-items: baseline;
+}
+.flexbox > * {
+    margin: 10px;
 } 
-#htmlCanvas {
+.graphBox {
+    flex: 1 0 auto;
     position: relative;
     top: 90px;
-    float: left;
     background-color: rgb(83, 83, 83);
     width: 45%;
+    padding: 5px;
 }
-#htmlCanvas h2 {
+.graphBox h2 {
     text-align: center;
 }
-#thisCanvas {
+.myCanvi {
     width: 100%;
     height: 100%;
     background-color: white;
