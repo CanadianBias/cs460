@@ -1,14 +1,21 @@
 <!DOCTYPE html>
+<!-- Elijah Dromarsky -->
+<!-- Basic Website with some added CSS flair for displaying some built in graphics -->
 <html>
     <head>
         <link rel="stylesheet" href="styles.css">
+        <!-- Script calls to make external libraries work -->
         <script src="https://cdn.plot.ly/plotly-2.31.1.min.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> 
+        <script src="https://www.gstatic.com/charts/loader.js"></script> 
+        <script src="https://d3js.org/d3.v4.js"></script>
     </head>
     <body>
         <header>
             <h1>Graphics Libraries Tutorial</h1>
         </header>
-        <div class="flexbox"> /
+        <!-- Below div contains all of the tables for user input -->
+        <div class="flexbox"> 
             <div class="divTable">
                 <h2>Table for Canvas Graphs</h2>
                 <table id="canvasTable" class="myTables">
@@ -133,6 +140,8 @@
                 </table>
             </div>
         </div>
+        <!-- Below div contains all of the graphs -->
+        <!-- Graph examples that require canvases have them -->
         <div class="flexbox">
             <div id="htmlCanvas" class="graphBox">
                 <h2>HTML Canvas Demo</h2>
@@ -146,6 +155,19 @@
             <div id="piePlot" class="graphBox"></div>
             <div id="donutPlot" class="graphBox"></div>
             <div id="sinePlot" class="graphBox"></div>
+            <div id="barChart" class="graphBox">
+                <canvas id="barCanvas" class="myCanvi"></canvas>
+            </div>
+            <div id="pieChart" class="graphBox">
+                <canvas id="pieCanvas" class="myCanvi"></canvas>
+            </div>
+            <div id="lineTestChart" class="graphBox">
+                <canvas id="lineCanvas" ckass="myCanvi"></canvas>
+            </div>
+            <div id="googlePieChart" class="graphBox"></div>
+            <div id="d3Test" class="graphBox">
+                <svg id="myPlot" style="width:500px;height:500px" class="myCanvi"></svg>
+            </div>
         </div>
         <script src="main.js"></script>
     </body>
