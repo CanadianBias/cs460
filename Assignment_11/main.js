@@ -110,18 +110,90 @@ function drawBarPlotly() {
 }
 
 function drawPiePlotly() {
-    
+    const myTable = document.getElementById("pieTable"); // grabs reference to table
+    let xArray = [];
+    let yArray = [];
+    for (let i = 1; i < 9; i++) { // iterates through table rows and grabs value in text input, stores to array
+        if (myTable.children[0].children[i].children[0].children[0].value != "" || myTable.children[0].children[i].children[1].children[0].value != "") {
+            xArray.push(myTable.children[0].children[i].children[0].children[0].value);
+            yArray.push(parseFloat(myTable.children[0].children[i].children[1].children[0].value));
+        }
+    }
+
+    const data = [{
+        labels: xArray,
+        values: yArray,
+        type: "pie"
+    }];
+
+    const layout = {title: "Pie Graph with Data"};
+
+    Plotly.newPlot("piePlot", data, layout);
+
+}
+
+function drawDonutPlotly() {
+    const myTable = document.getElementById("pieTable"); // grabs reference to table
+    let xArray = [];
+    let yArray = [];
+    for (let i = 1; i < 9; i++) { // iterates through table rows and grabs value in text input, stores to array
+        if (myTable.children[0].children[i].children[0].children[0].value != "" || myTable.children[0].children[i].children[1].children[0].value != "") {
+            xArray.push(myTable.children[0].children[i].children[0].children[0].value);
+            yArray.push(parseFloat(myTable.children[0].children[i].children[1].children[0].value));
+        }
+    }
+
+    const data = [{
+        labels: xArray,
+        values: yArray,
+        hole: .4,
+        type: "pie"
+    }];
+
+    const layout = {title: "Donut Graph with Data"};
+
+    Plotly.newPlot("donutPlot", data, layout);
+
+}
+
+function drawSineGraphs() {
+ 
+    const xArray1 = [];
+    const yArray1 = [];
+    for (let x = 0; x < 10; x += 0.1) {
+        xArray1.push(x);
+        yArray1.push(Math.sin(x));
+    }
+    const xArray2 = [];
+    const yArray2 = [];
+    for (let x = 0; x < 10; x += 0.1) {
+        xArray2.push(x);
+        yArray2.push(Math.sin(2*x));
+    }
+    const data1 = [{x:xArray1, y:yArray1, mode:"lines"}];
+    const data2 = [{x:xArray2, y:yArray2, mode:"lines"}];
+    const layout = {title: "Two Sine Functions With Different Frequencies"};
+    // const data = [data1, data2];
+    Plotly.newPlot("sinePlot", data2, layout);
 }
 
 // initializing function calls
 drawScatterCanvas();
 drawLineCanvas();
 drawBarPlotly();
+drawPiePlotly();
+drawDonutPlotly();
+drawSineGraphs();
 
 let inputList = document.querySelectorAll(".inputBox"); // when new input is recieved to tables, redraw graphs
 for (let i = 0; i < inputList.length; i++) {
     inputList[i].addEventListener("change", drawScatterCanvas);
     inputList[i].addEventListener("change", drawLineCanvas);
     inputList[i].addEventListener("change", drawBarPlotly);
+    inputList[i].addEventListener("change", drawPiePlotly);
+    inputList[i].addEventListener("change", drawDonutPlotly);
 }
 window.addEventListener("resize", drawBarPlotly); // needed as Plotly doesn't autoresize with window
+window.addEventListener("resize", drawPiePlotly);
+window.addEventListener("resize", drawDonutPlotly);
+window.addEventListener("resize", drawSineGraphs);
