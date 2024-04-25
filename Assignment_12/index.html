@@ -1,24 +1,33 @@
 <!DOCTYPE html>
+<!-- Elijah Dromarsky -->
+<!-- CS 460 -->
+<!-- Simple HTML webpage to demonstrate XSS attacks -->
 <html>
     <head>
-
+        <!-- From https://github.com/cure53/DOMPurify -->
+        <!-- Cleans HTML DOM input -->
+        <script type="text/javascript" src="dist/purify.min.js"></script>
     </head>
     <body>
         <h1>XSS Attacks</h1>
         <h2>XSS Attack Sourced From <a href="https://owasp.org/www-community/attacks/xss/">OWASP</a> and their <a href="https://cheatsheetseries.owasp.org/cheatsheets/XSS_Filter_Evasion_Cheat_Sheet.html">cheat sheet.</a> </h2>
         <p>Yo, don't type this.</p>
-        <!-- <p>&lt;SCRIPT SRC=https://cdn.jsdelivr.net/gh/Moksh45/host-xss.rocks/index.js&gt;&lt;/SCRIPT&gt;</p> -->
         <p>&lt;img src="http://url.to.file.which/not.exist" onerror=alert(document.cookie);&gt;</p>
-        <!-- <p>&lt;div&gt; &lt;script&gt;alert`1`&lt;/script&gt; &lt;/div&gt;</p> -->
-        <h2>My Own XSS ideas</h2>
-        <p>&lt;a href="http://10.130.0.1"&gt;Click here&lt;/a&gt;</p>
+        <!-- This input box is vulnerable -->
         <input type="text" id="myInputBox" onkeyup="printResult()">
         <p id="results"></p>
+        <h2>This input box below shouldn't allow for the cookies to be seen.</h2>
+        <!-- This input box shouldn't be vulnerable -->
+        <input type="text" id="sanitizedInputBox" onkeyup="printSanitizedResult()">
+        <p id="cleanResults"></p>
         <script>
             document.cookie = "text=Check Out My Cookie!";
             function printResult() {
                 inputBox = document.getElementById("myInputBox");
-                document.getElementById("results").innerHTML = inputBox.value;
+                document.getElementById("results").innerHTML = inputBox.value; // This will return the unsanitized result and allow for XSS attacks
+            }
+            function printSanitizedResult() {
+                document.getElementById("cleanResults").innerHTML = DOMPurify.sanitize(document.getElementById("sanitizedInputBox").value); // This sanitizes the input and doesn't allow for the cookies to be displayed
             }
         </script>
     </body>
