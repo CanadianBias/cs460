@@ -4,3 +4,14 @@ CS460 - JavaScript Programming
 Simple CSS changes to make the webpage "dark mode"
 Little other corrective changes to improve layout
 */
+body > * {
+    margin: 10px;
+}
+
+input {
+    width: 95%;
+}
+
+select {
+    width: 95%;
+}
