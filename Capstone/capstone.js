@@ -29,7 +29,10 @@ Given a string, count the number of words ending in 'y' or 'z' -- so the 'y' in 
 function updateResultYZ() {
     const jsInputYZ = document.getElementById("inputYZ");
     const jsCountYZ_Result = document.getElementById("countYZ_result");
-    jsCountYZ_Result.innerHTML = "Number of Words Ending in Y or Z: " + countYZ(jsInputYZ.value).toString; // error, converting function to string
+    // let result = countYZ(jsInputYZ.value);
+    jsCountYZ_Result.innerHTML = "Number of Words Ending in Y or Z: " + countYZ(jsInputYZ.value).toString(); // error, converting function to string
+    countSentences();
+    countWords();
 }
 
 function populateSelector(el, URL) { // populates the dropdown selector el with the lines of text found at URL
@@ -43,6 +46,7 @@ function populateSelector(el, URL) { // populates the dropdown selector el with 
         for (let i = 2; i < arrResponse.length; i++) {
             if (i % 2 == 0) {
                 const newOption = document.createElement("option");
+                newOption.value = i/2;
                 newOption.innerHTML = arrResponse[i];
                 dropdown.appendChild(newOption);
             }
@@ -52,11 +56,106 @@ function populateSelector(el, URL) { // populates the dropdown selector el with 
     xmlhttp.send();
 }
 
-function main() {
+// Updates input box when dropdown item is selected
+function changeDropdown() {
+    const verseDropdown = document.getElementById("matt18");
     const jsInputYZ = document.getElementById("inputYZ");
-    const jsCountYZ_Result = document.getElementById("countYZ_result");
+    // Reference to currently selected option element
+    const index = verseDropdown.selectedIndex;
+    // Update text box
+    jsInputYZ.value = verseDropdown.children[index].innerHTML
+    // Force input box to run event listener function
+    updateResultYZ();
+}
+
+// Updates input box with random verse selection
+function chooseRandomVerse() {
+    const verseDropdown = document.getElementById("matt18");
+    const jsInputYZ = document.getElementById("inputYZ");
+    jsInputYZ.value = verseDropdown.children[Math.floor(Math.random() * 35)].innerHTML;
+    updateResultYZ();
+}
+
+// From W3 Schools - Cookies
+// https://www.w3schools.com/js/js_cookies.asp
+
+function saveFavoriteVerse() {
+    const jsInputYZ = document.getElementById("inputYZ");
+    const btnFavorite = document.getElementById("btnFavorite");
+    const d = new Date();
+    d.setTime(d.getTime() + (30*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = "favVerse" + "=" + jsInputYZ.value + ";" + expires + ";path=/";
+    btnFavorite.value = "Favorite Verse Saved!";
+    updateFavoriteVerseText();
+}
+
+function getVerseCookieString() {
+    let name = "favVerse" + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function updateFavoriteVerseText() {
+    const txtFavorite = document.getElementById("favoriteVerse");
+    if (document.cookie != "") {
+        txtFavorite.innerHTML = "Favorite Verse: " + getVerseCookieString();
+    }
+}
+
+// ChatGPT3.5 Prompt - "Sentence count using RegEx in JS, be verbose."
+function countSentences() {
+    // Element references
+    const jsInputYZ = document.getElementById("inputYZ");
+    const txtSentence = document.getElementById("sentenceCount");
+    var sentenceRegex = /[^.!?]+[.!?]+/g; // regex to filter by sentence demarkers
+    var sentences = jsInputYZ.value.match(sentenceRegex); // compares input box against regex expression
+    if (sentences) {
+        txtSentence.innerHTML = "Sentence Count: " + sentences.length.toString();
+    } else {
+        txtSentence.innerHTML = "Sentence Count: 1";
+    }
+}
+
+// ChatGPT3.5 Prompt - "Word count using RegEx, JavaScript, be verbose (no comments in code)"
+function countWords() {
+    // Element references
+    const jsInputYZ = document.getElementById("inputYZ");
+    const txtWord = document.getElementById("wordCount");
+    // Regex to filter by word
+    var wordRegex = /\b\w+\b/g;
+    // Matching against text in input box
+    var words = jsInputYZ.value.match(wordRegex);
+    if (words) {
+        txtWord.innerHTML = "Word Count: " + words.length.toString();
+    } else {
+        txtWord.innerHTML = "Word Count: 0";
+    }
+}
+
+
+function main() {
+    const verseDropdown = document.getElementById("matt18");
+    const jsInputYZ = document.getElementById("inputYZ");
+    const btnRandom = document.getElementById("btnRandom");
+    const btnFavorite = document.getElementById("btnFavorite");
+    // const jsCountYZ_Result = document.getElementById("countYZ_result");
     populateSelector("matt18", "https://people.emmaus.edu/cs460/Resources/matt18.php");
     jsInputYZ.addEventListener("input", updateResultYZ);
+    verseDropdown.addEventListener("change", changeDropdown);
+    btnRandom.addEventListener("click", chooseRandomVerse);
+    btnFavorite.addEventListener("click", saveFavoriteVerse);
+    window.addEventListener("load", updateFavoriteVerseText);
 }
 
 main()

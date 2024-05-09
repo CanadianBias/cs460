@@ -6,25 +6,36 @@
 <html>
     <head>
         <link rel="stylesheet" href="capstone.css">
+        <script src="https://cdn.plot.ly/plotly-2.31.1.min.js" charset="utf-8"></script>
     </head>
     <body>
+        <h1>Capstone Project</h1>
+        <!-- Display favorite verse from cookies or leave blank if no cookie found -->
+        <h2 id="favoriteVerse"></h2>
         <!-- Dropdown selector populated in JS file -->
         <select id="matt18"></select>
-        <!-- Input allowing user text instead of dropdown -->
-        <input type="text" id="inputYZ" name="inputYZ" placeholder="Select a sentence from above or type in your own sentence.">
-        <div id="countYZ_result"></div>
-        <!-- Display favorite verse from cookies or leave blank if no cookie found -->
-        <!-- Display results of countYZ using sentence as parameter -->
         <!-- Button to allow random sentence from URL text source -->
-        <!-- Input and submit to allow for user to save favorite verse as cookie -->
-        <!-- Input for stats analyis -->
+        <input type="button" id="btnRandom" name="btnRandom" value="Press to choose a random verse...">
+        <!-- Input allowing user text instead of dropdown -->
+        <!-- Input to allow for user to save favorite verse as cookie -->
+        <input type="text" id="inputYZ" name="inputYZ" placeholder="Select a sentence from above or type in your own sentence.">
+        <!-- Button to allow for saving of favourite verse -->
+        <input type="button" id="btnFavorite" name="btnFavorite" value="Click to save as favorite verse..."></button>
+        <!-- Display results of countYZ using sentence as parameter -->
+        <div id="countYZ_result"></div>
+        <!-- Block for stats analysis -->
+        <div id="textStats">
             <!-- sentence count -->
+            <p id="sentenceCount">Sentence Count:</p>
             <!-- word count -->
+            <p id="wordCount">Word Count: </p>
             <!-- alphabetized word list -->
             <!-- letter histogram -->
             <!-- graph letter histogram using graphics library of choice -->
             <!-- calculate word histogram -->
             <!-- Display word plot of 50 most common words not counting "the", "and", "or", "but", "to" -->
+
+        </div>
         <script src="capstone.js"></script>
     </body>
 </html>
