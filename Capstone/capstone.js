@@ -33,6 +33,8 @@ function updateResultYZ() {
     jsCountYZ_Result.innerHTML = "Number of Words Ending in Y or Z: " + countYZ(jsInputYZ.value).toString(); // error, converting function to string
     countSentences();
     countWords();
+    generateWordList();
+    plotWordHistogram();
 }
 
 function populateSelector(el, URL) { // populates the dropdown selector el with the lines of text found at URL
@@ -143,6 +145,55 @@ function countWords() {
     }
 }
 
+// ChatGPT3.5 Prompt - "Create alphabetized word list with no duplicates in JS (no comments, be more verbose)"
+function generateWordList() {
+    const jsInputYZ = document.getElementById("inputYZ");
+    const alphabetizedList = document.getElementById("alphabetizedList");
+    var words = jsInputYZ.value.match(/\b\w+\b/g);
+    if (!words) {
+        return;
+    }
+    var lowercaseWords = words.map(function(word) {
+        return word.toLowerCase();
+    });    
+    var uniqueWords = [...new Set(lowercaseWords)];
+    var sortedWords = uniqueWords.sort();
+    for (let i = 0; i < sortedWords.length; i++) {
+        let newListElement = document.createElement("li");
+        newListElement.innerHTML = sortedWords[i];
+        alphabetizedList.appendChild(newListElement);
+    }
+}
+
+// ChatGPT3.5 Prompt - "a function that creates a dictionary of words and their frequencies in order to populate a word histogram using Plotly all in the same function, in JavaScript"
+function plotWordHistogram() {
+    Plotly.purge('wordHistogram');
+    const jsInputYZ = document.getElementById("inputYZ");
+    var words = jsInputYZ.value.match(/\b\w+\b/g);
+    var wordFreq = {};
+    words.forEach(function(word) {
+        word = word.toLowerCase();
+        wordFreq[word] = (wordFreq[word] || 0) + 1;
+    });
+    var sortedWords = Object.keys(wordFreq).sort(function(a, b) {
+        return wordFreq[b] - wordFreq[a];
+    });
+    var topWords = sortedWords.slice(0, 50);
+    var counts = topWords.map(function(word) {
+        return wordFreq[word];
+    });
+    var trace = {
+        x: topWords,
+        y: counts,
+        type: 'bar'
+    };
+    var layout = {
+        title: 'Word Histogram',
+        xaxis: { title: 'Word' },
+        yaxis: { title: 'Frequency' }
+    };
+    Plotly.newPlot('wordHistogram', [trace], layout);
+}
 
 function main() {
     const verseDropdown = document.getElementById("matt18");

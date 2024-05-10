@@ -3,8 +3,10 @@
 <!-- CS 460 - JavaScript Programming -->
 <!-- Basic HTML shell for website showcasing abilities for final -->
 <!-- Event listeners for HTML elements found in capstone.js -->
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="capstone.css">
         <script src="https://cdn.plot.ly/plotly-2.31.1.min.js" charset="utf-8"></script>
     </head>
@@ -21,16 +23,21 @@
         <input type="text" id="inputYZ" name="inputYZ" placeholder="Select a sentence from above or type in your own sentence.">
         <!-- Button to allow for saving of favourite verse -->
         <input type="button" id="btnFavorite" name="btnFavorite" value="Click to save as favorite verse..."></button>
-        <!-- Display results of countYZ using sentence as parameter -->
-        <div id="countYZ_result"></div>
         <!-- Block for stats analysis -->
         <div id="textStats">
+            <h2>Text Stats</h2>
+            <!-- Display results of countYZ using sentence as parameter -->
+            <div id="countYZ_result"></div>
             <!-- sentence count -->
             <p id="sentenceCount">Sentence Count:</p>
             <!-- word count -->
             <p id="wordCount">Word Count: </p>
             <!-- alphabetized word list -->
+            <p>Alphabetized List of Words</p>
+            <ul id="alphabetizedList"></ul>
             <!-- letter histogram -->
+            <p>Word Histogram</p>
+            <div id="wordHistogram"></div>
             <!-- graph letter histogram using graphics library of choice -->
             <!-- calculate word histogram -->
             <!-- Display word plot of 50 most common words not counting "the", "and", "or", "but", "to" -->
