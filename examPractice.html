@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <script>
+            function factorial(n) {
+                if (n == 0) {
+                    return 1;
+                }
+                return n * factorial(n - 1);
+            }
+            function loopingFactorial(n) {
+                let fact = 1;
+                for (let i = n; i > 0; i--) {
+                    fact *= i
+                }
+                return fact
+            }
+            function fibonacci(n) {
+                if (n <= 0) {
+                    return "WHAT!";
+                }
+                if (n == 1) {
+                    return 0;
+                } else if (n == 2) {
+                    return 1;
+                } else {
+                    return fibonacci(n - 1) + fibonacci (n - 2);
+                }
+            }
+            function loopingFibonnaci(n) {
+                if (n == 0) {
+                    return 0;
+                }
+                let a = 0, b = 1, c, i;
+                for (i = 2; i <= n; i++) {
+                    c = a + b;
+                    a = b;
+                    b = c;
+                }
+                return b
+            }
+            function canBuildWall(length, nBig, nSmall) {
+                let tempLength = length;
+                let maybeBig;
+                if (nBig != 0) {
+                    maybeBig = Math.floor(tempLength / 5);
+                } else {
+                    maybeBig = 0;
+                }
+                tempLength -= (5 * maybeBig);
+                let maybeSmall;
+                if (nSmall != 0) {
+                    maybeSmall = Math.floor(tempLength / 3);
+                } else {
+                    maybeSmall = 0;
+                }
+                if (((5 * maybeBig) + (3 * maybeSmall)) == length) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            class Product {
+                constructor(title, description, price, quantity, vendor, image_array) {
+                    this.title = title;
+                    this.description = description;
+                    this.price = price;
+                    this.quantity = quantity;
+                    this.vendor = vendor;
+                    this.image_array = image_array;
+                }
+            }
+            function mixString(s1, s2) {
+                let result = "";
+                const minLength = Math.min(s1.length, s2.length);
+                
+                // Iterate through both strings simultaneously
+                for (let i = 0; i < minLength; i++) {
+                    result += s1.charAt(i) + s2.charAt(i);
+                }
+                
+                // Append remaining characters from the longer string
+                result += s1.slice(minLength) + s2.slice(minLength);
+                
+                return result;
+            }
+        </script>
+    </body>
+</html>
